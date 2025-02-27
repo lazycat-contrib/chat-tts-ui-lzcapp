@@ -1,0 +1,14 @@
+services:
+  chat-tts-ui:
+    image: czyt/chattts-ui:latest-cpu
+    container_name: chat-tts-ui
+    restart: always
+    volumes:
+      - "./:/app"
+    ports:
+      - 9966:9966
+    user: "1000:1000"
+    environment:
+      LOG_LEVEL: DEBUG
+      WEB_ADDRESS: 0.0.0.0:9966
+    command: python3 app.py

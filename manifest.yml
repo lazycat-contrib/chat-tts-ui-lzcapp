@@ -1,0 +1,28 @@
+lzc-sdk-version: "0.1"
+name: ChatTTS webUI
+package: cloud.lazycat.app.chattts-webui
+version: 1.0.0
+description: 一个简单的本地网页界面，在网页使用 ChatTTS 将文字合成为语音，支持中英文、数字混杂，并提供API接口.
+homepage: https://github.com/jianchang512/ChatTTS-ui
+author: jianchang512
+application:
+  subdomain: chattts-webui
+  background_task: true
+  multi_instance: false
+  gpu_accel: true
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://chat-tts-ui.cloud.lazycat.app.chattts-webui.lzcapp:9966/
+services:
+  chat-tts-ui:
+    image: registry.lazycat.cloud/czyt/czyt/chattts-ui:1ba35f3a4db03c84
+    environment:
+      - LOG_LEVEL=DEBUG
+      - WEB_ADDRESS=0.0.0.0:9966
+    command: python3 app.py
+    binds:
+      - /lzcapp/var/asset:/app/asset
+unsupported_platforms:
+  - ios
+  - android
