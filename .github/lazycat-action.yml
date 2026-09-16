@@ -1,0 +1,42 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/chattts-webui.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: chat-tts-ui
+
+build:
+  run_buildscript: false
+
+images:
+  # 上游 tag 家族为 X.Y.Z-cpu（gpu_accel=false，只跟踪 cpu 变体）；排除 latest-cpu 等可变 tag
+  - id: chat-tts-ui
+    target: service
+    service: chat-tts-ui
+    source: czyt/chattts-ui
+    channel: custom
+    sort: semver
+    tag_regex: '^\d+\.\d+\.\d+-cpu$'
+    version_regex: '^(?P<version>\d+\.\d+\.\d+)-cpu$'
+    version_template: '{version}'
+    delivery:
+      mode: mirror
+
+stores:
+  official:
+    # Official store publication is intentionally disabled; publish only to Miaomiao Store.
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: ChatTTS webUI
+    summary: "一个简单的本地网页界面，使用 ChatTTS 将文字合成为语音"

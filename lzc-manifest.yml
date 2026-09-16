@@ -1,0 +1,18 @@
+application:
+  subdomain: chattts-webui
+  background_task: false
+  multi_instance: false
+  upstreams:
+    - location: /
+      backend: http://chat-tts-ui:9966/
+
+services:
+  chat-tts-ui:
+    # upstream: czyt/chattts-ui:1.0.1-cpu
+    image: docker.1ms.run/czyt/chattts-ui:1.0.1-cpu
+    environment:
+      - LOG_LEVEL=DEBUG
+      - WEB_ADDRESS=0.0.0.0:9966
+    command: python3 app.py
+    binds:
+      - /lzcapp/var/asset:/app/asset

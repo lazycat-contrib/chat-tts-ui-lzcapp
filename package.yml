@@ -1,0 +1,17 @@
+package: cloud.lazycat.app.chattts-webui
+version: 1.0.1
+name: ChatTTS webUI
+description: "一个简单的本地网页界面，在网页使用 ChatTTS 将文字合成为语音，支持中英文、数字混杂，并提供API接口."
+min_os_version: "1.5.0"
+homepage: https://github.com/jianchang512/ChatTTS-ui
+author: jianchang512
+unsupported_platforms:
+  - ios
+  - android
+locales:
+  zh:
+    description: "一个简单的本地网页界面，在网页使用 ChatTTS 将文字合成为语音，支持中英文、数字混杂，并提供API接口."
+    name: ChatTTS webUI
+  en:
+    description: "A simple local web UI for synthesizing speech from text with ChatTTS, supporting mixed Chinese, English and numbers, with an API interface."
+    name: ChatTTS webUI
