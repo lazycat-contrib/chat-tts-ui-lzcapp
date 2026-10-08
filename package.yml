@@ -1,4 +1,5 @@
 package: cloud.lazycat.app.chattts-webui
+license: CC-BY-NC-ND-4.0
 version: 1.0.2
 name: ChatTTS webUI
 description: "一个简单的本地网页界面，在网页使用 ChatTTS 将文字合成为语音，支持中英文、数字混杂，并提供API接口."
